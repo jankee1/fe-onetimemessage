@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { NavbarModule } from './navbar/navbar.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MessageModule } from './message/message.module';
+import { DescriptionModule } from './description/description.module';
+import { CsvModule } from './csv/csv.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { MessageModule } from './message/message.module';
     AppRoutingModule,
     NavbarModule,
     BrowserAnimationsModule,
-    MessageModule
+    MessageModule,
+    DescriptionModule,
+    CsvModule
   ],
   providers: [],
   bootstrap: [AppComponent]

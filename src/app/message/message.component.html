@@ -1,18 +1,22 @@
 <div class="mt-5 p-3">
-    <form [formGroup]="messageForm" (ngSubmit)="onSubmit()" >  
+    <form [formGroup]="messageForm" (ngSubmit)="onSubmit()" *ngIf="!isLoading">  
         <div class="form-group">
             <label for="emailRecipient" class="font-weight-bold font-size">Email recipient (optional):</label>
             <input class="form-control bg-dark text-light opacity p-4" type="email" id="emailRecipient" formControlName="emailRecipient">
         </div>
-    
+
         <div class="pt-4 pb-3 form-group">
             <label for="messageBody" class="font-weight-bold font-size">Messge:</label>
             <textarea class="form-control bg-dark text-light opacity p-4" name="messageBody" id="messageBody" cols="30" rows="10" formControlName="messageBody" placeholder="Type your message here"></textarea>    
         </div>
-    
+
         <div class="d-flex justify-content-sm-around">
-            <button type="button" class="btn btn-primary p-3" (click)="clearAllFields()"> Clear all fields</button>
-            <button type="submit" class="btn btn-primary p-3" [disabled]="messageForm.invalid">Send message</button>
+            <button type="button" class="btn btn-primary p-3" (click)="clearForm()"> Clear all fields</button>
+            <button type="submit" class="btn p-3" [ngClass]="messageForm.invalid ? 'btn-danger' : 'btn-primary'" [disabled]="messageForm.invalid">Send message</button>
         </div>
     </form>
+
+    <div *ngIf="isLoading" class="d-flex justify-content-center align-items-center">
+        <mat-progress-spinner diameter="200" mode="indeterminate"></mat-progress-spinner>
+    </div>
 </div>
