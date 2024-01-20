@@ -6,8 +6,6 @@ import { AppComponent } from './app.component';
 import { NavbarModule } from './navbar/navbar.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MessageModule } from './message/message.module';
-import { DescriptionModule } from './description/description.module';
-import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,9 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     NavbarModule,
     BrowserAnimationsModule,
-    MessageModule,
-    DescriptionModule,
-    HttpClientModule
+    MessageModule
   ],
   providers: [],
   bootstrap: [AppComponent]
