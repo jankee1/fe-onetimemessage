@@ -17,17 +17,14 @@ label {
 
 .table-container {
   overflow-y: auto;
-  max-height: 500px; 
+  max-height: 400px; 
 }
 
 .table-container thead th {
+  background-color: #292b2c;
   position: sticky;
   top: 0px; 
   z-index: 1;
-}
-
-table thead{
-  background-color: #292b2c;
 }
 
 .prerequisits {

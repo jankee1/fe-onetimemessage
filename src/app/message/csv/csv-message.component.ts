@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
-import { MAX_MESSAGE_COUNT, MAX_MESSAGE_LENGTH, MIN_MESSAGE_COUNT, MIN_MESSAGE_LENGTH } from '../config';
-import { Message } from '../model/message';
-import { MESSAGE_CSV_EMAIL_COLUMN, MESSAGE_CSV_OBLIGATORY_COLUMNS, MESSAGE_CSV_OPTIONAL_COLUMNS, MessageCsvModel } from './../model/message-csv.model';
+import { MAX_MESSAGE_COUNT, MAX_MESSAGE_LENGTH, MIN_MESSAGE_COUNT, MIN_MESSAGE_LENGTH } from '../../config';
+import { Message } from '../../model/message';
+import { MESSAGE_CSV_EMAIL_COLUMN, MESSAGE_CSV_OBLIGATORY_COLUMNS, MESSAGE_CSV_OPTIONAL_COLUMNS, MessageCsvModel } from '../../model/message-csv.model';
+import { ApiService } from '../../api.service';
+import { AbstractCreationMessageComponent } from '../abstract-creation-message.component';
 
 interface ErrorMessage {
   rowNumber?: number;
@@ -10,11 +12,11 @@ interface ErrorMessage {
 }
 
 @Component({
-  selector: 'csv',
-  templateUrl: './csv.component.html',
-  styleUrl: './csv.component.css'
+  selector: 'csv-message',
+  templateUrl: './csv-message.component.html',
+  styleUrl: './csv-message.component.css'
 })
-export class CsvComponent {
+export class CsvMessageComponent extends AbstractCreationMessageComponent  {
   csvForm: FormGroup = new FormGroup({
     csvFile: new FormControl<string>('', [Validators.required]),
     csvContent: new FormControl<string[]>([], [this.csvContentValidator()]),
@@ -26,7 +28,9 @@ export class CsvComponent {
   private readonly emailColumnName = MESSAGE_CSV_EMAIL_COLUMN.toLocaleLowerCase();
   private readonly allColumns = [...this.optionalColumns, ...this.obligatoryColumns];
 
-  constructor() {}
+  constructor(private apiService: ApiService) {
+    super(apiService);
+  }
 
   onFileChange(event: any): void {
     const file = (event.target as HTMLInputElement).files?.[0];
@@ -53,13 +57,12 @@ export class CsvComponent {
     const csvContent = this.csvForm.get('csvContent')?.value as unknown as string[];
     const parsedMessages = this.getMessages(csvContent);
 
-    const messages =  parsedMessages.map( message => {
-      const order = message['Order'] ? Number(message['Order']) : null;
-      return new Message(message['Message'], message['Email recepient'], order);
-    } )
+    // const messages =  parsedMessages.map( (message, index) => {
+    //   // const order = message['Order'] ? Number(message['Order']) : null;
+    //   return new Message(message['Message'], message['Email recepient'], index + 1);
+    // } )
 
-    console.log('File uploaded:', messages);
-
+    this.sendMessages(parsedMessages.map( (message, index) => new Message(message['Message'], message['Email recepient'], index + 1)));
     this.removeSelectedFile();
   }
 

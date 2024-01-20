@@ -13,7 +13,7 @@ export const MESSAGE_CSV_OBLIGATORY_COLUMNS: ObligatoryColumnsType[] = [... Obje
 
 type OptionalColumnsType = keyof MessageCsvModel;
 export const MESSAGE_CSV_OPTIONAL_COLUMNS: OptionalColumnsType[] = [... Object.keys({
-    Order: '',
+    // Order: '',
     'Email recepient': ''
 }) as unknown as ObligatoryColumnsType[]];
 

@@ -1,20 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CsvComponent } from './csv.component';
+import { CsvMessageComponent } from './csv-message.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 
 
 @NgModule({
   declarations: [
-    CsvComponent
+    CsvMessageComponent
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule
   ],
   exports: [
-    CsvComponent
+    CsvMessageComponent
   ]
 })
-export class CsvModule { }
+export class CsvMessageModule { }

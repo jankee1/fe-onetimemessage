@@ -1,26 +1,15 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { MessageComponent } from './message.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { CreateMessageModule } from './create/create-message.module';
+import { ReadMessageModule } from './read/read-message.module';
+import { CsvMessageModule } from './csv/csv-message.module';
 
 
 
 @NgModule({
-  declarations: [
-    MessageComponent
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    MatProgressSpinnerModule,
-    CommonModule,
-    ReactiveFormsModule
-  ],
   exports: [
-    MessageComponent
+    CreateMessageModule,
+    ReadMessageModule,
+    CsvMessageModule
   ],
 })
 export class MessageModule { }

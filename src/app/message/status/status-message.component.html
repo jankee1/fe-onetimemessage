@@ -1,0 +1,27 @@
+<div class="mt-5 p-30">
+    <div class="" *ngIf="responseObject?.length === 1">
+        <p><b>URL: </b> <a href="http://localhost:4000/message/{{ responseObject[0].id }}"> http://localhost:4000/message/{{ responseObject[0].id }}</a>  </p>
+        <p><b>Email status: </b> {{ responseObject[0].emailSentSuccessfully }} </p>
+    </div>
+
+    <div *ngIf="responseObject?.length >= 2" class="bg-dark text-light table-container">
+        <h3 class="text-center p-2"> You sent {{responseObject.length}} messages</h3>
+        <table class="table table-dark table-hover">
+          <thead>
+            <tr>
+              <th  scope="col" class="text-center"><h3>Number</h3></th>
+              <th  scope="col" class="text-center"><h3>Row number</h3></th>
+              <th  scope="col" class="text-center"><h3>Email notification</h3></th>
+            </tr>
+          </thead>
+          <tbody class="opacity">
+          <tr *ngFor="let response of responseObject; let i = index">
+            <td class="text-center">{{ response.order }}</td>
+            <td class="text-center">{{ response.id }}</td>
+            <td class="text-center">{{ response.emailSentSuccessfully }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <button type="button" class="btn btn-primary p-3" (click)="sendAnotherMessage()"> Send another message</button>
+</div>
