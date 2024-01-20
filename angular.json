@@ -74,10 +74,7 @@
               "buildTarget": "fe-onetimemessage:build:development"
             }
           },
-          "defaultConfiguration": "development",
-          "options": {
-            "port": 4000
-          }
+          "defaultConfiguration": "development"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",

@@ -1,15 +1,20 @@
 import { NgModule } from '@angular/core';
-import { CreateMessageModule } from './create/create-message.module';
-import { ReadMessageModule } from './read/read-message.module';
-import { CsvMessageModule } from './csv/csv-message.module';
+import { CommonModule } from '@angular/common';
+import { MessageComponent } from './message.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
 @NgModule({
+  declarations: [
+    MessageComponent
+  ],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule
+  ],
   exports: [
-    CreateMessageModule,
-    ReadMessageModule,
-    CsvMessageModule
+    MessageComponent
   ],
 })
 export class MessageModule { }
