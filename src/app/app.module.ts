@@ -7,7 +7,7 @@ import { NavbarModule } from './navbar/navbar.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MessageModule } from './message/message.module';
 import { DescriptionModule } from './description/description.module';
-import { CsvModule } from './csv/csv.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,7 +20,7 @@ import { CsvModule } from './csv/csv.module';
     BrowserAnimationsModule,
     MessageModule,
     DescriptionModule,
-    CsvModule
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

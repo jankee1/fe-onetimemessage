@@ -1,15 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CsvComponent } from './csv/csv.component';
+import { CsvMessageComponent } from './message/csv/csv-message.component';
 import { DescriptionComponent } from './description/description.component';
-import { MessageComponent } from './message/message.component';
+import { CreateMessageComponent } from './message/create/create-message.component';
+import { ReadMessageComponent } from './message/read/read-message.component';
+
 
 const routes: Routes = [
-  { path: '', component: MessageComponent },
-  { path: 'csv', component: CsvComponent },
+  { path: '', component: CreateMessageComponent },
+  { path: 'csv', component: CsvMessageComponent },
   { path: 'description', component: DescriptionComponent },
-  { path: 'message/:id', component: DescriptionComponent },
-  { path: '**', component: MessageComponent },
+  { path: 'message/:id', component: ReadMessageComponent },
+  { path: '**', component: CreateMessageComponent },
 ];
 
 @NgModule({
