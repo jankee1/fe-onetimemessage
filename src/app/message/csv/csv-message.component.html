@@ -1,0 +1,35 @@
+<div class="mt-5">
+    <div class="prerequisits pb-4">
+      <h5 class="text-center">You can download CSV draft file and filled it out or create it on your own by coping the below column names</h5>
+      <div class="code-editor">
+        {{ getCsvFileColumnNames() }}
+      </div>
+      <a href="../../assets/draft.csv" download="draft.csv" class="btn btn-primary">Download CSV draft</a>
+    </div>
+    <form [formGroup]="csvForm" (ngSubmit)="onSubmit()" class="d-flex flex-column">
+      <label for="csvFile">Upload CSV File:</label>
+      <div class="form-group d-flex justify-content-between align-items-center">
+        <input class="btn btn-primary file-input" type="file" id="csvFile" formControlName="csvFile" (change)="onFileChange($event)" accept=".csv">
+        <button type="button" class="btn btn-danger" (click)="removeSelectedFile()" *ngIf="csvForm.get('csvContent').value?.length > 1">Remove selected file</button>
+        <button type="submit" class="btn" [ngClass]="csvForm.invalid ? 'btn-danger' : 'btn-primary'" [disabled]="csvForm.invalid">Send messages from CSV file</button>
+      </div>
+    </form>
+
+    <div *ngIf="csvForm.get('csvContent').hasError('invalidCsvContent') && errorMessages.length" class="bg-dark text-light table-container">
+      <h3 class="text-center p-2"><b>Total number of errors: </b>{{errorMessages.length}}</h3>
+      <table class="table table-dark table-hover">
+        <thead>
+          <tr>
+            <th  scope="col" class="text-center"><h3>Erros message</h3></th>
+            <th  scope="col" class="text-center"><h3>Row number</h3></th>
+          </tr>
+        </thead>
+        <tbody class="opacity">
+        <tr *ngFor="let error of errorMessages; let i = index">
+          <td class="text-center">{{ error.errorReason }}</td>
+          <td class="text-center">{{ error?.rowNumber ?? 'N/A' }}</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+</div>

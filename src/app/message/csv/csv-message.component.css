@@ -1,0 +1,44 @@
+.file-input {
+    cursor: pointer;
+    content: 'Select a File';
+    color: #fff;
+}
+
+.file-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+.opacity {
+  opacity: 0.85;
+}
+label {
+  text-align: center;
+}
+
+.table-container {
+  overflow-y: auto;
+  max-height: 400px; 
+}
+
+.table-container thead th {
+  background-color: #292b2c;
+  position: sticky;
+  top: 0px; 
+  z-index: 1;
+}
+
+.prerequisits {
+  margin: auto;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.code-editor {
+  background-color: #282c34;
+  color: #abb2bf;
+  padding: 15px;
+  border-radius: 5px;
+  font-family: 'Courier New', Courier, monospace;
+  text-align: center;
+}
