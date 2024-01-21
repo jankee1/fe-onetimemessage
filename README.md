@@ -4,7 +4,12 @@
 - Email notofication is supported - if email will be submitted the recipient will receive an email with the unique URL. Email notifier is handled on separate thread on BE. 
 - Upload messages from CSV file is supported - it is possible to create several messages and send them at once.
 
-## Sending single message
+## Table of contents
+* [Single message](#Single-message)
+* [Uploading messages](#Uploading-messages)
+* [Accessing message](#Accessing-message)
+
+## Single message
 
 | FE            | BE               |
 |---------------|------------------|
@@ -13,7 +18,7 @@
 | HTML + CSS    | PostgresSQL      |
 |               | JPA              |
 
-# Flow of single message
+# Uploading messages
 A user needs to fill in a form. Each field is validated.
 ![Alt text](./images/message1.png)
 ![Alt text](./images/message2.png)
