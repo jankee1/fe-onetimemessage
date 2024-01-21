@@ -17,8 +17,8 @@
 |---------------|------------------|
 | Angular 17    | Java 21          |
 | Material UI   | Spring Boot 3.2  |
-| HTML + CSS    | PostgresSQL      |
-|               | JPA              |
+| Bootstrap     | PostgresSQL      |
+| HTML + CSS    | JPA              |
 
 # Single message
 A user needs to fill in a form. Each field is validated.
