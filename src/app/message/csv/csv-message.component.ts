@@ -54,13 +54,9 @@ export class CsvMessageComponent extends AbstractCreationMessageComponent  {
   }
 
   onSubmit(): void {
+    this.showStatus = true;
     const csvContent = this.csvForm.get('csvContent')?.value as unknown as string[];
     const parsedMessages = this.getMessages(csvContent);
-
-    // const messages =  parsedMessages.map( (message, index) => {
-    //   // const order = message['Order'] ? Number(message['Order']) : null;
-    //   return new Message(message['Message'], message['Email recepient'], index + 1);
-    // } )
 
     this.sendMessages(parsedMessages.map( (message, index) => new Message(message['Message'], message['Email recepient'], index + 1)));
     this.removeSelectedFile();

@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { MessageResponse } from '../../model/message-response';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { StatusModel } from './status.model';
 
 
 @Component({
@@ -9,13 +9,25 @@ import { MessageResponse } from '../../model/message-response';
 })
 export class StatusMessageComponent {
 
-  @Input() isLoading = false;
-  @Input() responseObject: MessageResponse[] = [];
+  @Input() status: StatusModel;
+  @Output() statusUpdateEvent = new EventEmitter<StatusModel>();
 
-  constructor() {}
+  constructor() {
+    console.log('test')
+  }
 
   sendAnotherMessage(): void {
-    this.responseObject = [];
-    this.isLoading = false;
+    this.statusUpdateEvent.emit({
+      isLoading: false,
+      responseObjects: []
+    })
+  }
+
+  showLoader(): boolean {
+    return this.status.isLoading && !this.status.responseObjects?.length;
+  }
+
+  getUrl(id: string): string {
+    return `http://localhost:4000/message/${id}`;
   }
 }

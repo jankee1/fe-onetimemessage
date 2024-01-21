@@ -6,22 +6,22 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { CreateMessageComponent } from './create-message.component';
-
-
+import { StatusMessageModule } from "../status/status-message.module";
 
 @NgModule({
-  declarations: [
-    CreateMessageComponent
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    MatProgressSpinnerModule,
-    CommonModule,
-    ReactiveFormsModule
-  ],
-  exports: [
-    CreateMessageComponent
-  ],
+    declarations: [
+        CreateMessageComponent
+    ],
+    exports: [
+        CreateMessageComponent
+    ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        MatProgressSpinnerModule,
+        CommonModule,
+        ReactiveFormsModule,
+        StatusMessageModule
+    ]
 })
 export class CreateMessageModule { }
