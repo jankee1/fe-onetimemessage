@@ -5,12 +5,13 @@
 - Upload messages from CSV file is supported - it is possible to create several messages and send them at once.
 
 ## Table of contents
+* [Tech stack](#Tech-stack)
 * [Single message](#Single-message)
 * [Uploading messages](#Uploading-messages)
 * [Accessing message](#Accessing-message)
 * Backeend repository https://github.com/jankee1/be-onetimemessage/
 
-## Single message
+## Tech stack
 
 | FE            | BE               |
 |---------------|------------------|
@@ -19,7 +20,7 @@
 | HTML + CSS    | PostgresSQL      |
 |               | JPA              |
 
-# Uploading messages
+# Single message
 A user needs to fill in a form. Each field is validated.
 ![Alt text](./images/message1.png)
 ![Alt text](./images/message2.png)
@@ -30,7 +31,7 @@ If input is valid, the form can be submited. When client is awaiting for respons
 Once the message is created unique URL is shown. This is the URL that can be shared with the recipient.
 ![Alt text](./images/message4.png)
 
-# Flow of messages uploaded from CSV file
+# Uploading messages
 A user needs to upload a valid CSV file with message. A draft of CSV can be downloaded or created by the user as guided on the screenshot. Custom method is implemented for validation of CSV file
 ![Alt text](./images/csv1.png)
 
