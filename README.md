@@ -36,6 +36,7 @@ A user needs to upload a valid CSV file with message. A draft of CSV can be down
 ![Alt text](./images/csv1.png)
 
 If invalid CSV file will be uploaded - errors will be dislayed row by row
+(example of file with invalid content)
 | Email recepient  |  Message         |
 |------------------|------------------|
 | invalidemail.com | test             |
@@ -45,6 +46,7 @@ If invalid CSV file will be uploaded - errors will be dislayed row by row
 ![Alt text](./images/csv3.png)
 
 If file will be validated successfully - user will be shared unique URLs to messages and email status (if email was filled in)
+(example of file with valid content)
 | Email recepient  |  Message             |
 |------------------|----------------------|
 | valid1@email.com | csv widomosc testowa |
