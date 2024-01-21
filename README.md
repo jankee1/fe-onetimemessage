@@ -4,7 +4,6 @@
 - Email notofication is supported - if email will be submitted the recipient will receive an email with the unique URL. Email notifier is handled on separate thread on BE. 
 - Upload messages from CSV file is supported - it is possible to create several messages and send them at once.
 
-<p align="center">
 ## Sending single message
 
 | FE            | BE               |
@@ -13,18 +12,37 @@
 | Material UI   | Spring Boot 3.2  |
 | HTML + CSS    | PostgresSQL      |
 |               | JPA              |
-</p>
 
-
-## Sending single message
+# Flow of single message
+A user needs to fill in a form. Each field is validated.
 ![Alt text](./images/message1.png)
 ![Alt text](./images/message2.png)
+
+If input is valid, the form can be submited. When client is awaiting for response a loader is displayed.
 ![Alt text](./images/message3.png)
+
+Once the message is created unique URL is shown. This is the URL that can be shared with the recipient.
 ![Alt text](./images/message4.png)
+
+When recipient will click on the shared link - he / she will be shown the message that was created by the author.
 ![Alt text](./images/message5.png)
 
-## Uploading messages from CSV file
+# Flow of messages uploaded from CSV file
+A user needs to upload a valid CSV file with message. A draft of CSV can be downloaded or created by the user as guided on the screenshot. Custom method is implemented for validation of CSV file
 ![Alt text](./images/csv1.png)
+
+If invalid CSV file will be uploaded - errors will be dislayed row by row
+| Email recepient  |  Message         |
+|------------------|------------------|
+| invalidemail.com | test             |
+|                  | l                |
+| s                | s                |
 ![Alt text](./images/csv2.png)
+
+| Email recepient  |  Message             |
+|------------------|----------------------|
+| valid1@email.com | csv widomosc testowa |
+| valid2@email.com | csv widomosc testowa |
+
 ![Alt text](./images/csv3.png)
 ![Alt text](./images/csv4.png)
