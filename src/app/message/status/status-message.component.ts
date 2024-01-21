@@ -9,12 +9,9 @@ import { StatusModel } from './status.model';
 })
 export class StatusMessageComponent {
 
-  @Input() status: StatusModel;
+  @Input()
+  status!: StatusModel;
   @Output() statusUpdateEvent = new EventEmitter<StatusModel>();
-
-  constructor() {
-    console.log('test')
-  }
 
   sendAnotherMessage(): void {
     this.statusUpdateEvent.emit({
