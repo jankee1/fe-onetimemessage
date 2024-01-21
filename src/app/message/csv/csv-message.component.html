@@ -1,4 +1,4 @@
-<div class="mt-5">
+<div class="mt-5" *ngIf="!showStatus">
     <div class="prerequisits pb-4">
       <h5 class="text-center">You can download CSV draft file and filled it out or create it on your own by coping the below column names</h5>
       <div class="code-editor">
@@ -32,4 +32,10 @@
       </tbody>
     </table>
     </div>
+</div>
+
+<div class="mt-5" *ngIf="showStatus">
+  <status-message 
+  [status]="getStatus()" 
+  (statusUpdateEvent)="onStatusUpdate($event)"></status-message>
 </div>

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../../api.service';
-import { MIN_MESSAGE_LENGTH, MAX_MESSAGE_LENGTH } from '../../config';
+import { MAX_MESSAGE_LENGTH, MIN_MESSAGE_LENGTH } from '../../config';
 import { Message } from '../../model/message';
 import { AbstractCreationMessageComponent } from '../abstract-creation-message.component';
 
@@ -23,6 +23,7 @@ export class CreateMessageComponent extends AbstractCreationMessageComponent {
   }
 
   onSubmit(): void {
+    this.showStatus = true;
     const message = new Message(this.messageForm.get('messageBody').value);
     const email = this.messageForm.get('emailRecipient')?.value;
     if(email) {
