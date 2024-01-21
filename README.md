@@ -34,6 +34,7 @@ If invalid CSV file will be uploaded - errors will be dislayed row by row
 | invalidemail.com | test             |
 |                  | l                |
 | s                | s                |
+
 ![Alt text](./images/csv3.png)
 
 If file will be validated successfully - user will be shared unique URLs to messages and email status (if email was filled in)
@@ -41,6 +42,7 @@ If file will be validated successfully - user will be shared unique URLs to mess
 |------------------|----------------------|
 | valid1@email.com | csv widomosc testowa |
 | valid2@email.com | csv widomosc testowa |
+
 ![Alt text](./images/csv4.png)
 
 # Accessing message
