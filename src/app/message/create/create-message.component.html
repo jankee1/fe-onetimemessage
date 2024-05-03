@@ -1,17 +1,43 @@
-<div class="mt-5 p-30" *ngIf="!showStatus">
+<div class="create-message" *ngIf="!showStatus">
     <form [formGroup]="messageForm" (ngSubmit)="onSubmit()" >  
-        <div class="form-group">
-            <label for="emailRecipient" class="font-weight-bold font-size">Email recipient (optional):</label>
-            <input class="form-control bg-dark text-light opacity p-4" type="email" id="emailRecipient" formControlName="emailRecipient">
+        <div class="form-group optional-data-btn">
+            <button type="button" class="btn btn-primary p-3" (click)="toggleOptionalFields()"> {{optionalFieldsVisible ? 'Hide' : 'Show'}} optional fields</button>
         </div>
 
-        <div class="pt-4 pb-3 form-group">
+        <div class="optional-data form-group" [hidden]="!optionalFieldsVisible">
+            <div class="email">
+                <label for="emailRecipient" class="font-weight-bold font-size">Email recipient</label>
+                <input class="form-control bg-dark text-light opacity" type="email" id="emailRecipient" formControlName="emailRecipient">
+            </div>
+            <div class="date">
+                <label for="meetingDate" class="font-weight-bold font-size">Meeting date</label>
+                <input type="datetime-local" formControlName="meetingDate" name="meetingDate" id="meetingDate" class="{{regularOrGreenStyling}}" min={{today}} max={{fiveDaysFromNow}}>
+            </div>
+            <div class="place">
+                <label for="meetingPlace" class="font-weight-bold font-size">Meeting place</label>
+                <input type="text" #meetingPlace list="test"
+                    formControlName="meetingPlace" name="meetingPlace" 
+                    id="meetingPlace" class="{{regularOrRedStyling}}" 
+                    placeholder="{{isMeetingDateSet ? 'City name' : 'Select date first'}}" [readonly]="!isMeetingDateSet"
+                    (focusin)="setIsMeetingPlaceFieldClicked(true)" (focusout)="setIsMeetingPlaceFieldClicked(false)">
+                <datalist (change)="setMeetingPlace($event)" id="test">
+                    <option value="" selected>--</option>
+                    <option *ngFor="let city of cityViews" [ngValue]="city.fullName">
+                                        <div>{{city.cityName}}, {{city.countryName}}</div>
+                                        <div>{{city.countyName}}</div>
+                                        <div>{{city.minTemp}} - {{city.maxTemp}}</div>
+                    </option>
+                </datalist>
+            </div>
+        </div>
+
+        <div class="pt-4 pb-3 form-group message-body">
             <label for="messageBody" class="font-weight-bold font-size">Messge:</label>
             <textarea class="form-control bg-dark text-light opacity p-4" name="messageBody" id="messageBody" cols="30" rows="10" formControlName="messageBody" placeholder="Type your message here"></textarea>    
         </div>
 
-        <div class="d-flex justify-content-sm-around">
-            <button type="button" class="btn btn-primary p-3" (click)="clearForm()"> Clear all fields</button>
+        <div class="d-flex justify-content-sm-around form-btns">
+            <button type="button" class="btn btn-primary p-3" (click)="clearForm()">Clear all fields</button>
             <button type="submit" class="btn p-3" [ngClass]="messageForm.invalid ? 'btn-danger' : 'btn-primary'" [disabled]="messageForm.invalid">Send message</button>
         </div>
     </form>

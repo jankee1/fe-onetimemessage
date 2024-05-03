@@ -13,7 +13,6 @@ export abstract class AbstractCreationMessageComponent {
         this.isLoading = true;
         this.apiservice.sendMessages(messages).subscribe(responseObjects => {
           this.responseObjects = responseObjects;
-
           this.isLoading = false;
         })
     }

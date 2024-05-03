@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { StatusModel } from './status.model';
+import { MessageResponse } from '../../model/message-response';
 
 
 @Component({
@@ -11,10 +12,6 @@ export class StatusMessageComponent {
 
   @Input() status: StatusModel;
   @Output() statusUpdateEvent = new EventEmitter<StatusModel>();
-
-  constructor() {
-    console.log('test')
-  }
 
   sendAnotherMessage(): void {
     this.statusUpdateEvent.emit({
@@ -29,5 +26,12 @@ export class StatusMessageComponent {
 
   getUrl(id: string): string {
     return `http://localhost:4000/message/${id}`;
+  }
+
+  getEmailNotification(response: MessageResponse): string {
+    if(response?.emailRecipient ) {
+      return response.emailSentSuccessfully ? 'Email sent' : 'Email has not been sent';
+    }
+    return 'Email has not been set';
   }
 }

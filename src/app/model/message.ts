@@ -1,16 +1,13 @@
-import { MessageResponse } from "./message-response";
+import { MessageResponse } from ".";
 
 export class Message extends MessageResponse {
     
     messageBody: string;
-    emailRecipient?: string;
+    meetingDate: Date;
+    meetingPlace: string
     
     constructor(messageBody: string, emailRecipient?: string, order?: number) {
-        super(order);
+        super(order, emailRecipient);
         this.messageBody = messageBody;
-
-        if(emailRecipient) {
-            this.emailRecipient = emailRecipient;
-        }
     }
 }

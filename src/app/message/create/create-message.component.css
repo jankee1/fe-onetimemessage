@@ -4,3 +4,76 @@
 .font-size {
     font-size: 20px;
 }
+.red-box-shadow {
+    box-shadow: 0 0 0 0.4em red;
+}
+.green-box-shadow {
+    box-shadow: 0 0 0 0.4em green;
+}
+.create-message {
+    margin-top: 50px;
+}
+.optional-data {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-row: 1fr;
+}
+.optional-data-btn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.optional-data div {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+.optional-data div label {
+    text-align: center;
+}
+
+@media only screen and (max-width: 770px) {
+    .create-message {
+        margin-top: 0;
+    }
+    .create-message button{
+        border-radius: 20px;
+    }
+    .optional-data {
+        grid-template-columns: 1fr;
+        grid-row: 1fr;
+    }
+    .optional-data div {
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 10px;
+    }
+    .optional-data div input {
+        padding: 25px 15px;
+    }
+    .optional-data-btn,
+    .optional-data-btn button {
+        width: 100%;
+    }
+    #emailRecipient, #meetingPlace{
+        width: 100%;
+    }
+    .message-body {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-row: 1fr;
+    }
+    .message-body label {
+        text-align: center;
+    }
+    .form-btns button {
+        margin-bottom: 10px;
+    }
+    .form-btns {
+        display: grid !important;
+        grid-template-columns: 1fr;
+        grid-row: 1fr;
+        padding-bottom: 20px;
+    }
+}
