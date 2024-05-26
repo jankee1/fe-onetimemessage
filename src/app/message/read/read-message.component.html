@@ -11,6 +11,19 @@
         <div class="col w-100">
             <p><b>Message:</b></p>
             <p>{{ message.messageBody }}</p>
+            <p><b>Meeting</b></p>
+            <p>Date: {{ message.meetingDate || notSpecified }}</p>
+            <p>City: {{ message.meetingCity || notSpecified }}</p>
+            <p *ngIf="message.minTemp && message.maxTemp else tempNotSet">
+                Expected temperature: {{ message.minTemp }}&deg;C - {{ message.maxTemp }}&deg;C 
+            </p>
+            <ng-template #tempNotSet>
+                <p>Expected temperature: {{ notSpecified }} </p> 
+            </ng-template>
         </div>
+    </div>
+
+    <div class="col text-center w-100" *ngIf="!message?.id && !isLoading">
+        <h2>Selected message has been already read and is erased from database</h2>
     </div>
 </div>

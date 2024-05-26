@@ -8,7 +8,7 @@
     </div>
     <form [formGroup]="csvForm" (ngSubmit)="onSubmit()" class="d-flex flex-column">
       <label for="csvFile">Upload CSV File:</label>
-      <div class="form-group d-flex justify-content-between align-items-center">
+      <div class="form-group d-flex justify-content-between align-items-center mobile-responsive">
         <input class="btn btn-primary file-input" type="file" id="csvFile" formControlName="csvFile" (change)="onFileChange($event)" accept=".csv">
         <button type="button" class="btn btn-danger" (click)="removeSelectedFile()" *ngIf="csvForm.get('csvContent').value?.length > 1">Remove selected file</button>
         <button type="submit" class="btn" [ngClass]="csvForm.invalid ? 'btn-danger' : 'btn-primary'" [disabled]="csvForm.invalid">Send messages from CSV file</button>

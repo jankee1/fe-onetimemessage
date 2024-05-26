@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../api.service';
-import { Message } from '../../model/message';
 import { ActivatedRoute } from '@angular/router';
-
+import { MessageMapperService } from '../../mapper/message-mapper.service';
+import { MessageView } from '../../model/message.view';
 
 @Component({
   selector: 'read-message',
@@ -12,19 +12,21 @@ import { ActivatedRoute } from '@angular/router';
 export class ReadMessageComponent implements OnInit {
 
   isLoading = false;
-  message: Message;
+  message: MessageView;
+  notSpecified = 'Not specified';
 
   constructor(
     private readonly apiservice: ApiService,
-    private readonly route: ActivatedRoute
+    private readonly route: ActivatedRoute,
+    private readonly messageMapperService: MessageMapperService
   ) {}
 
   ngOnInit(): void {
     this.isLoading = true;
     this.route.params.subscribe((params) => {
       this.apiservice.getMessage(params['id']).subscribe( incomingMessage => {
-        this.message = incomingMessage;
         this.isLoading = false;
+        this.message = this.messageMapperService.modelToView(incomingMessage);
       } )
     });
   }

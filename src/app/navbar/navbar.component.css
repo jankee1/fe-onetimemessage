@@ -1,15 +1,31 @@
 ul {
-    list-style-type: none; /* Remove default list styles */
+    list-style-type: none;
     padding: 0;
 }
 
 li {
-    display: inline-block; /* or display: inline; */
-    margin-right: 10px; /* Add spacing between list items if needed */
+    display: inline-block;
+    margin-right: 10px;
 }
 nav {
-  padding-top: 30px 20px;
+   padding-top: 30px 20px;
    width: 100%;
    margin: 0 auto; 
    text-align: center;
+}
+
+@media only screen and (max-width: 770px) {
+    ul {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(3, 1fr);
+      }
+    li {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    li a {
+        width: 100%;
+        border-radius: 20px;
+    }
 }
