@@ -7,7 +7,7 @@
 ## Table of contents
 * [Tech stack](#Tech-stack)
 * [Single message](#Single-message)
-*   [Selecting meeting date and place](##Selecting-meeting-date-and-place)
+* *[Selecting meeting date and place](##Selecting-meeting-date-and-place)
 * [Uploading messages](#Uploading-messages)
 * [Accessing message](#Accessing-message)
 * Backeend repository https://github.com/jankee1/be-onetimemessage/
