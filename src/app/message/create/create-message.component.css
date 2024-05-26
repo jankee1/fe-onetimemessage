@@ -4,3 +4,73 @@
 .font-size {
     font-size: 20px;
 }
+.red-box-shadow {
+    box-shadow: 0 0 0 0.4em red;
+}
+.green-box-shadow {
+    box-shadow: 0 0 0 0.4em green;
+}  
+.create-message {
+    margin-top: 50px;
+}
+.optional-data {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0,1fr));
+    grid-row: 1fr;
+}
+
+:host ::ng-deep.p-dropdown {
+    width: 100%;
+    text-align: left;
+    height: calc(1.5em + .75rem + 2px);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    background-clip: padding-box;
+    border-radius: .25rem;
+    padding: .375rem .75rem;
+    border: 1px solid #ced4da;
+}
+
+.optional-data-btn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+@media only screen and (max-width: 770px) {
+    .create-message {
+        margin-top: 0;
+    }
+    .create-message button{
+        border-radius: 20px;
+    }
+    .optional-data {
+        grid-template-columns: minmax(0,1fr);
+        grid-row: 3fr;
+    }
+    .optional-data div {
+        display: flex  !important;
+        flex-direction: column;
+        padding-bottom: 10px;
+    }
+    .optional-data-btn,
+    .optional-data-btn button {
+        width: 100%;
+    }
+    .message-body {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        grid-row: 1fr;
+    }
+    .form-btns button {
+        margin-bottom: 10px;
+    }
+    .form-btns {
+        display: grid !important;
+        grid-template-columns: 1fr;
+        grid-row: 1fr;
+        padding-bottom: 20px;
+    }
+}

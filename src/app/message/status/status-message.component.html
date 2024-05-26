@@ -1,7 +1,7 @@
 <div class="mt-5 p-30" *ngIf="!showLoader()">
     <div class="bg-dark text-light p-3 opacity" *ngIf="status.responseObjects?.length === 1">
         <p><b>URL: </b> <a href="{{ getUrl(status.responseObjects[0].id)  }}"> {{ getUrl(status.responseObjects[0].id) }}</a>  </p>
-        <p><b>Email status: </b> {{ status.responseObjects[0].emailSentSuccessfully }} </p>
+        <p><b>Email status: </b> {{ getEmailNotification(status.responseObjects[0])}} </p>
     </div>
 
     <div *ngIf="status.responseObjects?.length >= 2" class="bg-dark text-light table-container">
@@ -18,7 +18,7 @@
           <tr *ngFor="let response of status.responseObjects; let i = index">
             <td class="text-center">{{ response.order }}</td>
             <td class="text-center"> <a href="{{ getUrl(response.id)  }}"> {{ getUrl(response.id) }}</a></td>
-            <td class="text-center">{{ response.emailSentSuccessfully }}</td>
+            <td class="text-center">{{ getEmailNotification(response) }}</td>
           </tr>
         </tbody>
       </table>
