@@ -7,6 +7,7 @@
 ## Table of contents
 * [Tech stack](#Tech-stack)
 * [Single message](#Single-message)
+*   [Selecting meeting date and place](##Selecting-meeting-date-and-place)
 * [Uploading messages](#Uploading-messages)
 * [Accessing message](#Accessing-message)
 * Backeend repository https://github.com/jankee1/be-onetimemessage/
@@ -24,6 +25,10 @@
 A user needs to fill in a form. Each field is validated.
 ![Alt text](./images/message1.png)
 ![Alt text](./images/message2.png)
+
+## Selecting meeting date and place
+![Alt text](./images/message2.1.png)
+![Alt text](./images/message2.2.png)
 
 If input is valid, the form can be submited. When client is awaiting for response a loader is displayed.
 ![Alt text](./images/message3.png)
