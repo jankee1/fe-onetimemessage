@@ -3,7 +3,7 @@
 - The idea for this application is to send a message to recipient that can be accessed only via unique URL and can be seen only once
 - Email notofication is supported - if email will be submitted the recipient will receive an email with the unique URL. The application is integrated with external email service provider.
 - Upload messages from CSV file is supported - it is possible to create several messages and send them at once.
-- Application is integrated with 2 external APIs ([OpenWeatherApp](https://openweathermap.org/) and [OpenStreetMap](https://www.openstreetmap.org/)) 
+- Application is integrated with 2 external APIs ([OpenWeatherApp](https://openweathermap.org/) and [OpenStreetMap](https://www.openstreetmap.org/)) in order to schedule a meeting (not supported for CSV upload)
   
 
 ## Table of contents
