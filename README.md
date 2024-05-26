@@ -29,7 +29,7 @@ A user needs to fill in a form. Each field is validated.
 ![Alt text](./images/message2.png)
 
 ## Selecting meeting date and place
-Select meeting date. Up to 5 days are supported due to integration with weather API
+Select meeting date. Schedule up to 5 days in advance is supported due to integration with weather API
 ![Alt text](./images/message2.2.png)
 Select city where the meeting is supposed to take place. Expected weather will be provided for selected day.
 ![Alt text](./images/message2.1.png)
