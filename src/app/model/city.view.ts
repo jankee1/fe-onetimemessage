@@ -6,4 +6,6 @@ export interface CityView {
     date: Date;
     minTemp: number;
     maxTemp: number;
+    lat: number;
+    lon: number;
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Message, MessageResponse, City } from './model';
+import { MessageModel, MessageResponse, City } from './model';
 
 @Injectable({
   providedIn: 'root'
@@ -12,12 +12,12 @@ export class ApiService {
 
   constructor(private http: HttpClient) {}
 
-  sendMessages(messages: Message[]): Observable<MessageResponse[]>  {
+  sendMessages(messages: MessageModel[]): Observable<MessageResponse[]>  {
     return this.http.post<MessageResponse[]>(`${this.apiUrl}/message`, messages);
   }
 
-  getMessage(id: string): Observable<Message> {
-    return this.http.get<Message>(`${this.apiUrl}/message/${id}`);
+  getMessage(id: string): Observable<MessageModel> {
+    return this.http.get<MessageModel>(`${this.apiUrl}/message/${id}`);
   }
 
   getCity(name: string): Observable<City[]> {

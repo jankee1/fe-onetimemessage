@@ -4,30 +4,47 @@
             <button type="button" class="btn btn-primary p-3" (click)="toggleOptionalFields()"> {{optionalFieldsVisible ? 'Hide' : 'Show'}} optional fields</button>
         </div>
 
-        <div class="optional-data form-group" [hidden]="!optionalFieldsVisible">
+        <div class="optional-data" [hidden]="!optionalFieldsVisible">
             <div class="email">
-                <label for="emailRecipient" class="font-weight-bold font-size">Email recipient</label>
-                <input class="form-control bg-dark text-light opacity" type="email" id="emailRecipient" formControlName="emailRecipient">
+                <label for="emailRecipient" class="form-label font-weight-bold font-size">Email recipient</label>
+                <input class="bg-dark text-light opacity form-control" type="email" id="emailRecipient" formControlName="emailRecipient">
             </div>
             <div class="date">
-                <label for="meetingDate" class="font-weight-bold font-size">Meeting date</label>
-                <input type="datetime-local" formControlName="meetingDate" name="meetingDate" id="meetingDate" class="{{regularOrGreenStyling}}" min={{today}} max={{fiveDaysFromNow}}>
+                <label for="meetingDate" class="form-label font-weight-bold font-size">Meeting date</label>
+                <input type="datetime-local" formControlName="meetingDate" name="meetingDate" id="meetingDate"
+                class="bg-dark text-light opacity form-control" min={{today}} max={{fiveDaysFromNow}}>
             </div>
             <div class="place">
-                <label for="meetingPlace" class="font-weight-bold font-size">Meeting place</label>
-                <input type="text" #meetingPlace list="test"
-                    formControlName="meetingPlace" name="meetingPlace" 
-                    id="meetingPlace" class="{{regularOrRedStyling}}" 
-                    placeholder="{{isMeetingDateSet ? 'City name' : 'Select date first'}}" [readonly]="!isMeetingDateSet"
-                    (focusin)="setIsMeetingPlaceFieldClicked(true)" (focusout)="setIsMeetingPlaceFieldClicked(false)">
-                <datalist (change)="setMeetingPlace($event)" id="test">
-                    <option value="" selected>--</option>
-                    <option *ngFor="let city of cityViews" [ngValue]="city.fullName">
-                                        <div>{{city.cityName}}, {{city.countryName}}</div>
-                                        <div>{{city.countyName}}</div>
-                                        <div>{{city.minTemp}} - {{city.maxTemp}}</div>
-                    </option>
-                </datalist>
+                <label for="meetingPlace" class="form-label font-weight-bold font-size">Meeting place</label>
+                 <p-dropdown 
+                    [disabled]="!isMeetingDateSet" 
+                    [(ngModel)]="selectedCity"
+                    [ngModelOptions]="{standalone: true}"
+                    styleClass="bg-dark text-light opacity mobile-padding"
+                    [options]="cityViews$ | async"
+                    [filter]="true"
+                    filterBy="cityName" 
+                    [showClear]="true"
+                    (onFilter)="search($event)"
+                    placeholder="Type city name"
+                    emptyFilterMessage="{{moviesLoading ? 'Loading...' : 'No results found'}}"
+                >
+                        <ng-template let-selectedOption pTemplate="selectedItem" >
+                            <div class="flex align-items-center gap-2">
+                                <div class="text-light">
+                                    {{ selectedOption.cityName }}, {{ selectedOption.countyName }}
+                                </div>
+                            </div>
+                        </ng-template>
+                        <ng-template let-cityView pTemplate="item">
+                            <div class="flex align-items-center gap-2">
+                                <h6 class="font-weight-bold">City</h6>
+                                <div class="text-wrap">{{ cityView.cityName }}, {{ cityView.countyName }}, {{ cityView.countryName }}</div>
+                                <h6 class="font-weight-bold">Temperature</h6>
+                                <div class="w-100">{{ cityView.minTemp }}&deg;C - {{ cityView.maxTemp }}&deg;C</div>
+                            </div>
+                        </ng-template>
+                </p-dropdown>
             </div>
         </div>
 
@@ -44,6 +61,7 @@
 </div>
 <div class="mt-5 p-30" *ngIf="showStatus">
     <status-message 
-    [status]="getStatus()" 
-    (statusUpdateEvent)="onStatusUpdate($event)"></status-message>
+        [status]="getStatus()" 
+        (statusUpdateEvent)="onStatusUpdate($event)">
+    </status-message>
 </div>

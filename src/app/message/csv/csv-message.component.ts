@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { MAX_MESSAGE_COUNT, MAX_MESSAGE_LENGTH, MIN_MESSAGE_COUNT, MIN_MESSAGE_LENGTH } from '../../config';
-import { Message } from '../../model/message';
+import { MessageModel } from '../../model/message.model';
 import { MESSAGE_CSV_EMAIL_COLUMN, MESSAGE_CSV_OBLIGATORY_COLUMNS, MESSAGE_CSV_OPTIONAL_COLUMNS, MessageCsvModel } from '../../model/message-csv.model';
 import { ApiService } from '../../api.service';
 import { AbstractCreationMessageComponent } from '../abstract-creation-message.component';
@@ -58,7 +58,7 @@ export class CsvMessageComponent extends AbstractCreationMessageComponent  {
     const csvContent = this.csvForm.get('csvContent')?.value as unknown as string[];
     const parsedMessages = this.getMessages(csvContent);
 
-    this.sendMessages(parsedMessages.map( (message, index) => new Message(message['Message'], message['Email recepient'], index + 1)));
+    this.sendMessages(parsedMessages.map( (message, index) => new MessageModel(message['Message'], message['Email recepient'], index + 1)));
     this.removeSelectedFile();
   }
 

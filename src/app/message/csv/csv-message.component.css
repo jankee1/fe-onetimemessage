@@ -42,3 +42,13 @@ label {
   font-family: 'Courier New', Courier, monospace;
   text-align: center;
 }
+
+@media only screen and (max-width: 770px) {
+  .btn {
+    margin-bottom: 30px;
+  }
+  .mobile-responsive {
+      display: flex !important;
+      flex-direction: column;
+    }
+}

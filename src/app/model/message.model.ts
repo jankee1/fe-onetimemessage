@@ -1,10 +1,10 @@
-import { MessageResponse } from ".";
+import { City, MessageResponse } from ".";
 
-export class Message extends MessageResponse {
+export class MessageModel extends MessageResponse {
     
     messageBody: string;
     meetingDate: Date;
-    meetingPlace: string
+    meetingPlace: City
     
     constructor(messageBody: string, emailRecipient?: string, order?: number) {
         super(order, emailRecipient);
